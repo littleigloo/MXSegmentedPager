@@ -1,3 +1,3 @@
 # MXSegmentedPager
 
-A description of this package.
+📦 Swift Package 🔸 Segmented Pager.
