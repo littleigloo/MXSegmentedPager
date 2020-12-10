@@ -207,7 +207,7 @@ typedef NS_ENUM(NSInteger, MXSegmentedControlPosition) {
  */
 @interface MXSegmentedPager : UIView
 
-@property (nonatomic, strong) NSObject *customScrollWillDelegate;
+@property (nonatomic, weak) NSObject *customScrollWillDelegate;
 
 /**
  Delegate instance that adopt the MXSegmentedPagerDelegate.

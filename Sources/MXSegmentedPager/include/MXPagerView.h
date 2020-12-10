@@ -115,7 +115,7 @@ typedef NS_ENUM(NSInteger, MXPagerViewTransitionStyle) {
  */
 @interface MXPagerView : UIScrollView
 
-@property (nonatomic, strong) NSObject *customPagerDelegate;
+@property (nonatomic,weak) NSObject *customPagerDelegate;
 
 /**
  Delegate instance that adopt the MXPagerViewDelegate.
