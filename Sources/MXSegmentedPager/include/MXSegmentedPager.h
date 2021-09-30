@@ -25,6 +25,8 @@
 #import <MXPagerView.h>
 #import <MXParallaxHeader.h>
 
+#import <MXPagerViewController.h>
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -283,6 +285,47 @@ typedef NS_ENUM(NSInteger, MXSegmentedControlPosition) {
  @return YES to allow segmented-pager and view to scroll together. The default implementation returns YES.
  */
 - (BOOL)segmentedPager:(MXSegmentedPager *)segmentedPager shouldScrollWithView:(__kindof UIView *)view;
+
+@end
+
+#pragma mark MXSegmentedPagerController
+
+/**
+ The MXSegmentedPager's data source object may adopt the MXSegmentedPagerControllerDataSource protocol in order to use the MXSegmentedPagerController with child UIViewController.
+ */
+@protocol MXSegmentedPagerControllerDataSource <MXSegmentedPagerDataSource>
+
+/**
+ Asks the data source for a view controller to insert in a particular page of the segmented-pager.
+ 
+ @param segmentedPager A segmented-pager object requesting the view.
+ @param index          An index number identifying a page in segmented-pager.
+ 
+ @return An object inheriting from UIViewController that the segmented-pager can use for the specified page.
+ */
+- (__kindof UIViewController *)segmentedPager:(MXSegmentedPager *)segmentedPager viewControllerForPageAtIndex:(NSInteger)index;
+
+/**
+ Asks the data source for a segue identifier to insert in a particular page of the segmented-pager.
+ 
+ @param segmentedPager A segmented-pager object requesting the view.
+ @param index          An index number identifying a page in segmented-pager.
+ 
+ @return The segue identifier that the segmented-pager can use for the specified page.
+ */
+- (NSString *)segmentedPager:(MXSegmentedPager *)segmentedPager segueIdentifierForPageAtIndex:(NSInteger)index;
+
+@end
+
+/**
+ The MXSegmentedPagerController class creates a controller object that manages a segmengted-pager view.
+ */
+@interface MXSegmentedPagerController : UIViewController <MXSegmentedPagerDelegate, MXSegmentedPagerControllerDataSource>
+
+/**
+ Returns the segmengted-pager view managed by the controller object.
+ */
+@property (nonatomic, strong, readonly) MXSegmentedPager *segmentedPager;
 
 @end
 
